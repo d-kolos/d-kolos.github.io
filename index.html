@@ -9,12 +9,20 @@
     <style>
         .refresh { display: inline-block; transform: rotate(90deg); }
         .main { width: fit-content; margin: 0 auto; }
+        .now { margin-left: 15px; }
+        .reload { padding: 5px; }
+        .reload:hover { background-color: cornsilk; }
     </style>
 </head>
 <body>
 <div class="main">
     <h1>d-kolos.github.io</h1>
-    <p><a href="./">Reload <span class="refresh">↻</span></a>&nbsp;</p>
+    <p><a class="reload" href="./">Reload <span class="refresh">↻</span></a>&nbsp;<span class="now"></span></p>
+    <script>
+        let now = new Date();
+        let nowSpan = document.querySelector('.now');
+        nowSpan.innerHTML = now.toLocaleString();
+    </script>
     <p>2021, 2022, 2023</p>
 </div>
 <div>
