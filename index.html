@@ -20,16 +20,30 @@
         <span class="load"></span>&nbsp;
         <br><br>
         <span class="now"></span>&nbsp;
+        <br><br>
+        <span class="dif">0</span>&nbsp;
     </p>
     <script>
-        document.querySelector('.load').innerHTML = (new Date).toLocaleString();
+        loadDate = new Date;
+        document.querySelector('.load').innerHTML = (loadDate).toLocaleString();
+        let nowDate = new Date;
         let nowSpan = document.querySelector('.now');
-        nowSpan.innerHTML = (new Date).toLocaleString();
+        nowSpan.innerHTML = nowDate.toLocaleString();
+        let difSpan = document.querySelector('.dif');
         setInterval(function () {
-            nowSpan.innerHTML = (new Date).toLocaleString();
+            nowDate = new Date;
+            let dif = Math.floor((nowDate - loadDate) / 1000);
+            let seconds = Math.floor(dif % 60).toString();
+            let secondsString = (seconds.length === 1) ? '0' + seconds : seconds;
+            let minutes = Math.floor(((dif - seconds) / 60) % 60).toString();
+            let minutesString = (minutes.length === 1) ? '0' + minutes : minutes;
+            let hours = Math.floor((dif - minutes * 60 - seconds) / 3600);
+            nowSpan.innerHTML = nowDate.toLocaleString();
+            difSpan.innerHTML = 'dif: ' + dif.toString() + ' --- ' + hours + ':' + minutesString + ':' +secondsString;
+
         }, 500);
     </script>
-    <p>2021, 2022, 2023</p>
+    <p>2021, 2022, 2023, 2024</p>
 </div>
 <div>
     <p>&nbsp;</p>
